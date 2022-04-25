@@ -24,7 +24,7 @@ with open("vocabulary_news20group.txt", "r") as file:
     vocabulary = eval(file.readline())
 
 Tfidmodel =pickle.load(
-    open('/home/zettadevs/Deploy_TFID_model/tfid.pkl', 'rb'))
+    open('tfid.pkl', 'rb'))
 traineddata = Tfidmodel.A #np.float16(Tfidmodel.A)
 
 
@@ -126,18 +126,18 @@ def DrugFind():
     for txt in l:
         tx =json.loads(txt)
         lsDrug.append(tx)
-    # response = app.response_class(
-    #     response=json.dumps(lsDrug),
-    #     status=200,
-    #     mimetype='application/json'
-    # )
+    response = app.response_class(
+        response=json.dumps(lsDrug),
+        status=200,
+        mimetype='application/json'
+    )
     return flask.jsonify(lsDrug) 
 
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
     #'Connects to the server'
     #HOST = '127.0.0.1'
     #PORT = 5000      #make sure this is an integer
 
     #export FLASK_ENV=development
-#    app.run()
+    app.run()
